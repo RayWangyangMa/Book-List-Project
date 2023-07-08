@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Confirm Addition</title>
+		<!-- Add Bootstrap or other styling libraries here -->
+	</head>
+	<body>
+		<h1>Confirm Addition</h1>
+		<h2>{{ book.title }}</h2>
+		<p>
+			<b>Author:</b> {{ book.author }}<br />
+			<b>Publication Date:</b> {{ book.pub_date }}<br />
+			<b>ISBN:</b> {{ book.isbn }}
+		</p>
+		<img src="{{ book.thumbnail }}" alt="{{ book.title }}" />
+		<form method="POST">
+			{% csrf_token %}
+			<button type="submit">Add to My Book List</button>
+		</form>
+	</body>
+</html>

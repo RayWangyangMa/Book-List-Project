@@ -1,0 +1,72 @@
+<head>
+	<link
+		rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	/>
+	<!-- Add any other head elements you need here -->
+</head>
+<style>
+	.card {
+		display: grid; /* Use CSS Grid layout */
+		grid-template-rows: auto 1fr auto; /* Divide the card into three sections */
+	}
+	.card-img-top {
+		width: 100%;
+		min-height: 200px;
+		object-fit: cover;
+	}
+</style>
+<body>
+	<div class="container py-5">
+		<h2 class="text-center">Search Results</h2>
+
+		<!-- Display any messages -->
+		{% if messages %}
+		<div class="alert alert-info">
+			{% for message in messages %} {{ message }} {% endfor %}
+		</div>
+		{% endif %}
+
+		<!-- Search Results -->
+		{% if books %}
+		<div class="row">
+			{% for book in books %}
+			<div class="col-lg-4 col-md-6 mb-4">
+				<div class="card h-100">
+					<img
+						src="{{ book.thumbnail }}"
+						class="card-img-top"
+						alt="{{ book.title }}"
+					/>
+					<div class="card-body">
+						<h5 class="card-title">{{ book.title }}</h5>
+						<p class="card-text">
+							<b>Author:</b> {{ book.author }}<br />
+							<b>Publication Date:</b> {{ book.pub_date }}<br />
+							<b>ISBN:</b> {{ book.isbn }}
+						</p>
+					</div>
+					<div class="card-footer">
+						<form
+							action="{% url 'books:confirm_add' book.isbn %}"
+							method="POST"
+						>
+							{% csrf_token %}
+							<input
+								type="submit"
+								value="Add to my books"
+								class="btn btn-primary btn-block"
+							/>
+						</form>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+		<p class="text-center text-muted">
+			No books found. Please try again with a different search term.
+		</p>
+		{% endif %}
+	</div>
+</body>

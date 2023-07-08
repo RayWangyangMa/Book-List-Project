@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Welcome to Book Library</title>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		/>
+		<style>
+			.container {
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+			.landing-container {
+				text-align: center;
+				font-size: 1.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			{% if messages %}
+			<div class="messages">
+				{% for message in messages %}
+				<div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<div class="landing-container">
+				<h1>Welcome to The Book List</h1>
+				<p>A place to manage and explore your favourite books, and add it to you read list!</p>
+				<a href="{% url 'login' %}" class="btn btn-primary btn-lg"
+					>Get Started</a
+				>
+			</div>
+		</div>
+	</body>
+</html>
