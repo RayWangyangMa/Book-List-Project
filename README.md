@@ -2,9 +2,13 @@
 
 A dynamic, user-focused library management application built with Python, Django, PostgreSQL, and the Google Books API.
 ![Landing Page](./img/LandingPage.png)
+Landing Page
 ![Login Page](./img/LoginPage.png)
+Login Page
 ![Book List ](./img/BookList.png)
+Book List
 ![Search Result](./img/SearchResult.png)
+Search Result Page
 
 ## Key Features
 
